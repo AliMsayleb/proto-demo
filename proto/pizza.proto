@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package src;
+option go_package = "./rpc";
+//
+//enum Toppings {
+//  TOPPING_UNSPECIFIED = 0;
+//  TOPPING_CORN = 1;
+//  TOPPING_TOMATO = 2;
+//  TOPPING_CHEESE = 3;
+//  TOPPING_OLIVES = 4;
+//}
+
+message PizzaRequest {
+  string sauce = 1;
+  bool vegetarian = 2;
+//  Toppings toppings = 3;
+//  PizzaResponse response = 4;
+}
+
+message PizzaResponse {
+  string name = 1;
+}
+
+service PizzaService {
+  rpc GetName(PizzaRequest) returns (PizzaResponse);
+}

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package src;
+option go_package = "./rpc";
+
+message UserResponse {
+  string name = 1;
+  string age = 2;
+  string username = 3;
+  string phoneNumber = 4;
+  string email = 5;
+  repeated double roles = 6;
+}
+
+message UserRequest {
+  string name = 1;
+  string age = 2;
+  string username = 3;
+  string phoneNumber = 4;
+  string email = 5;
+  repeated double roles = 6;
+}
+
+//Interface {
+//  function Get(UserRequest $userRequest): UserResponse
+//}
+
+
+
+service UserService {
+  rpc Get(UserRequest) returns (UserResponse);
+  rpc StreamGet(stream UserRequest) returns (stream UserResponse);
+}
+
+message Number {
+  double number = 1;
+}
+
+service CalculatorService {
+  rpc Sum(stream Number) returns (Number);
+}
